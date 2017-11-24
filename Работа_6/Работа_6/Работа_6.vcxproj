@@ -115,6 +115,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="catch.hpp" />
     <ClInclude Include="graph.h" />
     <ClInclude Include="graph_algs.h" />
   </ItemGroup>
