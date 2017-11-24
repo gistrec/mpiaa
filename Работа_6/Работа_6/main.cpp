@@ -1,5 +1,7 @@
 #include "graph_algs.h"
 
+//  Привет
+
 void main() {
 	Graph* graph = new Graph();
 	graph->add_vertex(0);
