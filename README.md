@@ -1,2 +1,0 @@
-# mpiaa
-MPiAA course
