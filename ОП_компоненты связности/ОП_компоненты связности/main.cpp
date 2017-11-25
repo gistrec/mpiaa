@@ -77,11 +77,12 @@ void main() {
 
 	vector<vector<int>> result = connected_components(graph);
 
-	for (vector<vector<int>>::iterator iter = result.begin(); iter != result.end(); ++iter) {
-		for (vector<int>::iterator innerIter = iter->begin(); innerIter != iter->end(); ++innerIter) {
+	for (auto iter = result.begin(); iter != result.end(); ++iter) {
+		for (auto innerIter = iter->begin(); innerIter != iter->end(); ++innerIter) {
 			cout << *innerIter << " ";
 		}
 		cout << endl;
 	}
+
 	system("pause");
 }
