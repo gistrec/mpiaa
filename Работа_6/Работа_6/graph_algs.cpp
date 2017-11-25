@@ -1,5 +1,7 @@
 ﻿#include "graph_algs.h"
 #include <queue>
+#include <stack>
+#include <iostream>
 
 // Поиск числа в векторе
 // Нужна чтобы искать пройдена ли вершина или нет
@@ -62,10 +64,40 @@ std::vector<std::vector<int>> connected_components(const Graph &graph) {
 
 // Найти кратчайший путь
 std::vector<int> shortest_path(const Graph &graph, int start_vertex, int end_vertex) {
+	// Список всех вершин в графе
+	std::vector<int> verticles = graph.get_vertices();
 
-	std::vector<int> needGo;
-	needGo.push_back(start_vertex);
+	std::vector<int> distance(verticles.size());
 
-	std::vector<int> result;
-	return result;
+	std::queue<int> queue; // Сюда помещаем вершины, которые будем обходить
+	int run = 1; // Шаг
+	queue.push(start_vertex);
+
+	std::vector<int> isRun;
+
+	while (!queue.empty()) {
+		int verticle = queue.back();
+		queue.pop();
+		std::vector<int> adjacent_vertices = graph.get_adjacent_vertices(verticle);
+		for (auto v = adjacent_vertices.begin(); v != adjacent_vertices.end(); v++) {
+			if (distance.at(*v) < run) {
+				distance.at(*v) = run;
+			}
+		}
+	}
+ 
+
+
+
+	for (std::vector<int>::iterator iter = distance.begin(); iter != distance.end(); ++iter) {
+			std::cout << *iter << " ";
+	}
+	std::cout << std::endl;
+
+
+
+
+
+
+	return std::vector<int>(2);
 }
