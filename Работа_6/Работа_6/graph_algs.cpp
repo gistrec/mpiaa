@@ -63,36 +63,61 @@ std::vector<std::vector<int>> connected_components(const Graph &graph) {
 }
 
 // Найти кратчайший путь
+// Поиск в ширину
+// Работает за O(n+m), где n - число вершин, m - число ребер
+//
+// Сам алгоритм можно понимать как процесс "поджигания" графа:
+// на нулевом шаге поджигаем только вершину s. 
+// На каждом следующем шаге огонь с каждой уже горящей вершины перекидывается на всех её соседей;
+// Т.е. за одну итерацию алгоритма происходит расширение "кольца огня" в ширину на единицу (отсюда и название алгоритма).
 std::vector<int> shortest_path(const Graph &graph, int start_vertex, int end_vertex) {
 	// Список всех вершин в графе
 	std::vector<int> verticles = graph.get_vertices();
 
+	// Массив 'предков', в котором для каждоый вершины храним номер вершины, по которой мы попали в эту вершину
+	std::vector<int> parents(verticles.size()); 
+	// Массив длин путей
 	std::vector<int> distance(verticles.size());
+	// Массив уже подожженых вершин
+	std::vector<bool> used(verticles.size());
 
-	std::queue<int> queue; // Сюда помещаем вершины, которые будем обходить
-	int run = 1; // Шаг
-	queue.push(start_vertex);
+	// Сюда помещаем вершины, которые будем обходить
+	std::queue<int> queue; 
 
-	std::vector<int> isRun;
+	queue.push(start_vertex); // Добавляем стартовую вершину в начало 
+
+	used[start_vertex] = true;
+	parents[start_vertex] = -1;
 
 	while (!queue.empty()) {
-		int verticle = queue.back();
+		int verticle = queue.front();
 		queue.pop();
+		// Получаем смежные вершины
 		std::vector<int> adjacent_vertices = graph.get_adjacent_vertices(verticle);
-		for (auto v = adjacent_vertices.begin(); v != adjacent_vertices.end(); v++) {
-			if (distance.at(*v) < run) {
-				distance.at(*v) = run;
+
+		for (std::vector<int>::iterator v = adjacent_vertices.begin(); v != adjacent_vertices.end(); ++v) {
+			if (!used[*v]) {
+				used[*v] = true;
+				queue.push(*v);
+				distance[*v] = distance[verticle] + 1;
+				parents[*v] = verticle;
 			}
 		}
 	}
  
 
-
-
-	for (std::vector<int>::iterator iter = distance.begin(); iter != distance.end(); ++iter) {
-			std::cout << *iter << " ";
+	if (!used[end_vertex])
+		std::cout << "No path!";
+	else {
+		std::vector<int> path;
+		for (int v = end_vertex; v != -1; v = parents[v])
+			path.push_back(v);
+		reverse(path.begin(), path.end());
+		std::cout << "Path: ";
+		for (size_t i = 0; i < path.size(); ++i)
+			std::cout << path[i] + 1 << " ";
 	}
-	std::cout << std::endl;
+
 
 
 
