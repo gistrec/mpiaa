@@ -1,30 +1,30 @@
-#include "dict.h"
+п»ї#include "dict.h"
 #include <iostream>
 #include <vector>
 
-// Инициализация массива
+// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РјР°СЃСЃРёРІР°
 Dictionary::Dictionary() {
 	table.resize(max_size);
-	// Все индексы в массиве равны nullptr
+	// Р’СЃРµ РёРЅРґРµРєСЃС‹ РІ РјР°СЃСЃРёРІРµ СЂР°РІРЅС‹ nullptr
 	for (auto iter = table.begin(); iter != table.end(); ++iter) {
 		*iter = nullptr;
 	}
 }
 
 void Dictionary::set(const std::string &key, const std::string &value) {
-	// Получаем хэш ключа
+	// РџРѕР»СѓС‡Р°РµРј С…СЌС€ РєР»СЋС‡Р°
 	int hash = Dictionary::getHash(key);
-	// Если в словаре уже есть данный ключ
+	// Р•СЃР»Рё РІ СЃР»РѕРІР°СЂРµ СѓР¶Рµ РµСЃС‚СЊ РґР°РЅРЅС‹Р№ РєР»СЋС‡
 	if (Dictionary::get(key) != "") {
-		// Происто изменяем значение в структуре с заданным ключом
+		// РџСЂРѕРёСЃС‚Рѕ РёР·РјРµРЅСЏРµРј Р·РЅР°С‡РµРЅРёРµ РІ СЃС‚СЂСѓРєС‚СѓСЂРµ СЃ Р·Р°РґР°РЅРЅС‹Рј РєР»СЋС‡РѕРј
 		std::shared_ptr<HashNode> node = table.at(hash);
 		while (node->key != key) {
 			node = node->next;
 		}
 		node->value = value;
-	// Если ключа нет
+	// Р•СЃР»Рё РєР»СЋС‡Р° РЅРµС‚
 	} else {
-		// Создаем новую структуру и вставляем в начало списка
+		// РЎРѕР·РґР°РµРј РЅРѕРІСѓСЋ СЃС‚СЂСѓРєС‚СѓСЂСѓ Рё РІСЃС‚Р°РІР»СЏРµРј РІ РЅР°С‡Р°Р»Рѕ СЃРїРёСЃРєР°
 		now_size++;
 		std::shared_ptr<HashNode> newNode = std::make_shared<HashNode>();
 		newNode->key = key;
@@ -35,16 +35,16 @@ void Dictionary::set(const std::string &key, const std::string &value) {
 }
 
 std::string Dictionary::get(const std::string &key) const {
-	// Получаем хэш
+	// РџРѕР»СѓС‡Р°РµРј С…СЌС€
 	int hash = Dictionary::getHash(key);
-	// Пока существует элемент и у этого элемента ключ - не равен ключу, который ищем
+	// РџРѕРєР° СЃСѓС‰РµСЃС‚РІСѓРµС‚ СЌР»РµРјРµРЅС‚ Рё Сѓ СЌС‚РѕРіРѕ СЌР»РµРјРµРЅС‚Р° РєР»СЋС‡ - РЅРµ СЂР°РІРµРЅ РєР»СЋС‡Сѓ, РєРѕС‚РѕСЂС‹Р№ РёС‰РµРј
 	std::shared_ptr<HashNode> node = table.at(hash);
 	while (node != nullptr && node->key != key) {
 		node = node->next;
 	}
-	// Если элемент не существует - возвращаем пустую строку
+	// Р•СЃР»Рё СЌР»РµРјРµРЅС‚ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚ - РІРѕР·РІСЂР°С‰Р°РµРј РїСѓСЃС‚СѓСЋ СЃС‚СЂРѕРєСѓ
 	if (node == nullptr) return "";
-	// Иначе - значение
+	// РРЅР°С‡Рµ - Р·РЅР°С‡РµРЅРёРµ
 	return node->value;
 }
 
@@ -52,9 +52,9 @@ int Dictionary::size() const {
 	return now_size;
 }
 
-// Функция для получения хэша
-// Складываем int'овые значения всех чисел в строке
-// И хэш равен остатоку от деления полученого числа на максимальный размер таблицы
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ С…СЌС€Р°
+// РЎРєР»Р°РґС‹РІР°РµРј int'РѕРІС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РІСЃРµС… С‡РёСЃРµР» РІ СЃС‚СЂРѕРєРµ
+// Р С…СЌС€ СЂР°РІРµРЅ РѕСЃС‚Р°С‚РѕРєСѓ РѕС‚ РґРµР»РµРЅРёСЏ РїРѕР»СѓС‡РµРЅРѕРіРѕ С‡РёСЃР»Р° РЅР° РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ С‚Р°Р±Р»РёС†С‹
 int Dictionary::getHash(const std::string &string) const {
 	int hash = 0;
 	for (std::string::const_iterator iter = string.begin(); iter != string.end(); ++iter) {
