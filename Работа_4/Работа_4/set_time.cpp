@@ -89,9 +89,9 @@ void measure(int size, int num_of_keys) {
 		   size, num_of_keys, lin_time, lin_found, set_time, set_found);
 }
 
-/*int main() {
+int main() {
 	for (int i = 1; i < 6; i++) {
 		measure(pow(10, i), 1000);
 	}
 	return 0;
-}*/
+}
