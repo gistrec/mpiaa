@@ -1,10 +1,7 @@
-#pragma once
 #include "graph.h"
 
-#include <vector>
+/// Returns true if graph is connected, false otherwise.
+bool is_connected(const Graph &graph);
 
-/// Returns connected components of the graph as array of arrays of vertices.
-std::vector<std::vector<int>> connected_components(const Graph &graph);
-
-/// Returns shortest path from start to end vertex as array of vertices.
-std::vector<int> shortest_path(const Graph &graph, int start_vertex, int end_vertex);
+/// Returns true if there is a path from start vertex to end vertex, false otherwise.
+bool path_exists(const Graph &graph, int start_vertex, int end_vertex);

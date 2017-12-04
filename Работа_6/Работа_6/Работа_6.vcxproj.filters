@@ -9,9 +9,8 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Файлы ресурсов">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Unit-testing">
+      <UniqueIdentifier>{ed89374c-d591-4a34-a5c2-6b209ea3f483}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -21,10 +20,22 @@
     <ClCompile Include="graph.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
-    <ClCompile Include="graph_algs.cpp">
+    <ClCompile Include="graph_algs_2.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
     <ClCompile Include="unit-test.cpp">
+      <Filter>Unit-testing</Filter>
+    </ClCompile>
+    <ClCompile Include="graph_algs_test.cpp">
+      <Filter>Unit-testing</Filter>
+    </ClCompile>
+    <ClCompile Include="graph_algs_2_test.cpp">
+      <Filter>Unit-testing</Filter>
+    </ClCompile>
+    <ClCompile Include="graph_test.cpp">
+      <Filter>Unit-testing</Filter>
+    </ClCompile>
+    <ClCompile Include="graph_algs.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,11 +43,14 @@
     <ClInclude Include="graph.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="graph_algs_2.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
     <ClInclude Include="graph_algs.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
     <ClInclude Include="catch.hpp">
-      <Filter>Заголовочные файлы</Filter>
+      <Filter>Unit-testing</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
