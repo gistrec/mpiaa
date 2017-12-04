@@ -73,13 +73,21 @@ std::vector<std::vector<int>> connected_components(const Graph &graph) {
 std::vector<int> shortest_path(const Graph &graph, int start_vertex, int end_vertex) {
 	// Список всех вершин в графе
 	std::vector<int> verticles = graph.get_vertices();
+	// Результат
+	std::vector<int> path;
+
+	// Обработка исключительных ситуаций
+	// Когда размер графа меньше, чем порядок вершины
+	if (verticles.size() < start_vertex || verticles.size() < end_vertex) return path;
+	// И когда начало и конец - одинаковые вершины
+	if (start_vertex == end_vertex) return {0, 0};
 
 	// Массив 'предков', в котором для каждоый вершины храним номер вершины, по которой мы попали в эту вершину
-	std::vector<int> parents(verticles.size()); 
+	std::vector<int> parents(verticles.size());
 	// Массив длин путей
 	std::vector<int> distance(verticles.size());
 	// Массив уже подожженых вершин
-	std::vector<bool> used(verticles.size());
+	std::vector<int> used(verticles.size());
 
 	// Сюда помещаем вершины, которые будем обходить
 	std::queue<int> queue; 
@@ -106,23 +114,22 @@ std::vector<int> shortest_path(const Graph &graph, int start_vertex, int end_ver
 	}
  
 
-	if (!used[end_vertex])
-		std::cout << "No path!";
-	else {
-		std::vector<int> path;
-		for (int v = end_vertex; v != -1; v = parents[v])
+	
+
+	if (used[end_vertex]) {
+		int v = end_vertex;
+		while (v != -1) {
 			path.push_back(v);
-		reverse(path.begin(), path.end());
-		std::cout << "Path: ";
-		for (size_t i = 0; i < path.size(); ++i)
-			std::cout << path[i] + 1 << " ";
+			//std::cout << v << " ";
+			v = parents[v];
+		}
 	}
+	std::reverse(path.begin(), path.end());
 
+	// Вывод результата
+	//for (std::vector<int>::iterator v = path.begin(); v != path.end(); ++v)
+	//	std::cout << *v << " ";
+	//std::cout << std::endl;
 
-
-
-
-
-
-	return std::vector<int>(2);
+	return path;
 }
