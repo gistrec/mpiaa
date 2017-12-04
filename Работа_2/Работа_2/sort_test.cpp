@@ -1,4 +1,4 @@
-#define CATCH_CONFIG_MAIN // This tells Catch to provide a main() - only do this in one cpp file
+п»ї#define CATCH_CONFIG_MAIN // This tells Catch to provide a main() - only do this in one cpp file
 
 #include "catch.hpp"
 #include "sort.h"
@@ -27,8 +27,8 @@ TEST_CASE("Dual element") {
 TEST_CASE("Many elements") {
 	std::vector<int> input = { 1, 3, 2 , 8};
 	std::vector<int> expected = { 1, 2, 3 , 8};
-	// Результат будет записан на место входного массива
+	// Р РµР·СѓР»СЊС‚Р°С‚ Р±СѓРґРµС‚ Р·Р°РїРёСЃР°РЅ РЅР° РјРµСЃС‚Рѕ РІС…РѕРґРЅРѕРіРѕ РјР°СЃСЃРёРІР°
 	bubbleSort(input);
-	// Проверка результата и ожидаемого результата на равенство 
+	// РџСЂРѕРІРµСЂРєР° СЂРµР·СѓР»СЊС‚Р°С‚Р° Рё РѕР¶РёРґР°РµРјРѕРіРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р° РЅР° СЂР°РІРµРЅСЃС‚РІРѕ 
 	CHECK(input == expected);
 }

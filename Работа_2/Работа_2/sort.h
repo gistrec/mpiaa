@@ -1,7 +1,7 @@
-#pragma once
+п»ї#pragma once
 #include <vector>
 
-// Сортировка пузырьком
+// РЎРѕСЂС‚РёСЂРѕРІРєР° РїСѓР·С‹СЂСЊРєРѕРј
 void bubbleSort(std::vector<int> &array) {
 	if (array.size() == 0 || array.size() == 1) return;
 
