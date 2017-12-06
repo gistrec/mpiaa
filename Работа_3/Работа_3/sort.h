@@ -12,7 +12,9 @@ void counting_sort(std::vector<int> &vec) {
 	// —оздаем вспомогательный массив
 	
 	// ћинимальное и максимальное значение
-	
+	int min = (int) std::min_element(vec.begin(), vec.end());
+
+
 	std::vector<int> cnt(vec.size());
 	// «аполн€ем вспомогательный массив нул€ми
 	for (auto iter = cnt.begin(); iter != cnt.end(); ++iter) {
