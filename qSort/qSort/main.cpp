@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <vector>
 #include <iostream>
 
@@ -18,7 +18,7 @@ void printArray(std::vector<Class> &vector) {
 
 void qsort(std::vector<Class> &vector, int left, int right) {
 	
-	int main = right; // Порядок опорного элемента в векторе
+	int main = right; // РџРѕСЂСЏРґРѕРє РѕРїРѕСЂРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РІ РІРµРєС‚РѕСЂРµ
 
 	int local_left = left;
 	int local_right = right;
@@ -30,29 +30,29 @@ void qsort(std::vector<Class> &vector, int left, int right) {
 		std::cout << "Left: " << local_left << std::endl;
 		std::cout << "Right: " << local_right << std::endl << std::endl;*/
 
-		// сдвигаем левую границу пока элемент vector[loval_right] больше [опорного элемента]
+		// СЃРґРІРёРіР°РµРј Р»РµРІСѓСЋ РіСЂР°РЅРёС†Сѓ РїРѕРєР° СЌР»РµРјРµРЅС‚ vector[loval_right] Р±РѕР»СЊС€Рµ [РѕРїРѕСЂРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°]
 		while ((vector[local_left].value <= vector[main].value) && (local_left < local_right))
 			local_left++; 
 
-		if (local_right != local_left) {// если границы не сомкнулись
-			// Если элемент [left] соседний с [main]
-			// Свопаем их
+		if (local_right != local_left) {// РµСЃР»Рё РіСЂР°РЅРёС†С‹ РЅРµ СЃРѕРјРєРЅСѓР»РёСЃСЊ
+			// Р•СЃР»Рё СЌР»РµРјРµРЅС‚ [left] СЃРѕСЃРµРґРЅРёР№ СЃ [main]
+			// РЎРІРѕРїР°РµРј РёС…
 			if (local_left + 1 == main) {
 				std::swap(vector[local_left], vector[main]);
-			// Иначе перемещаем элемент [right] на место разрешающего
+			// РРЅР°С‡Рµ РїРµСЂРµРјРµС‰Р°РµРј СЌР»РµРјРµРЅС‚ [right] РЅР° РјРµСЃС‚Рѕ СЂР°Р·СЂРµС€Р°СЋС‰РµРіРѕ
 			} else {
 				std::swap(vector[local_left], vector[main-1]);
 				std::swap(vector[main-1], vector[main]);
 				main--;
 			}
-			// сдвигаем левую границу вправо
+			// СЃРґРІРёРіР°РµРј Р»РµРІСѓСЋ РіСЂР°РЅРёС†Сѓ РІРїСЂР°РІРѕ
 			local_right--;
 		}
 		
 	}
-	// Левая часть
+	// Р›РµРІР°СЏ С‡Р°СЃС‚СЊ
 	if (local_left != left) qsort(vector, left, main - 1);
-	// Правая часть 
+	// РџСЂР°РІР°СЏ С‡Р°СЃС‚СЊ 
 	if (local_right != right) qsort(vector, main, right);
 
 		/*std::cout << "Vector[local_left]: " << vector[local_left].value << std::endl;
