@@ -1,37 +1,37 @@
-#pragma once
+п»ї#pragma once
 
 #include <string>
 #include <iostream>
 
 class Town {
 public:
-	std::string name; // Название города
+	std::string name; // РќР°Р·РІР°РЅРёРµ РіРѕСЂРѕРґР°
 	
-	std::string type; // Тип города: либо town, либо village
+	std::string type; // РўРёРї РіРѕСЂРѕРґР°: Р»РёР±Рѕ town, Р»РёР±Рѕ village
 
-	float latitude; // Широта
-	float longitude; // Долгота
+	float latitude; // РЁРёСЂРѕС‚Р°
+	float longitude; // Р”РѕР»РіРѕС‚Р°
 
-	int population; // Число жителей
+	int population; // Р§РёСЃР»Рѕ Р¶РёС‚РµР»РµР№
 
-	// Функция возвращает строку
-	// В которй содержится информация о городе
+	// Р¤СѓРЅРєС†РёСЏ РІРѕР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂРѕРєСѓ
+	// Р’ РєРѕС‚РѕСЂР№ СЃРѕРґРµСЂР¶РёС‚СЃСЏ РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РіРѕСЂРѕРґРµ
 	std::string to_string() const{
 		return name + "|" + type + "|" + std::to_string(latitude) + "|" 
 			+ std::to_string(longitude) + "|" +  std::to_string(population);
 	}
 
-	// Функция для получения значений из строки вида
+	// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ Р·РЅР°С‡РµРЅРёР№ РёР· СЃС‚СЂРѕРєРё РІРёРґР°
 	// name|type|latitude|longitude|population
 	void from_string(char* str) {
-		// Вырезаем из нее нужные элементы
+		// Р’С‹СЂРµР·Р°РµРј РёР· РЅРµРµ РЅСѓР¶РЅС‹Рµ СЌР»РµРјРµРЅС‚С‹
 		name = strtok_s(str, "|", &str); ///TODO: V522 https://www.viva64.com/en/w/V522 There might be dereferencing of a potential null pointer 'strtok_s(str, "|", & str)'. Operator = of the string class expects a valid pointer.
 		type = strtok_s(str, "|", &str); ///TODO: V522 https://www.viva64.com/en/w/V522 There might be dereferencing of a potential null pointer 'strtok_s(str, "|", & str)'. Operator = of the string class expects a valid pointer.
-		// std::stof(char*) - переводит строку в float
+		// std::stof(char*) - РїРµСЂРµРІРѕРґРёС‚ СЃС‚СЂРѕРєСѓ РІ float
 		latitude = std::stof(strtok_s(str, "|", &str)); ///TODO: V522 https://www.viva64.com/en/w/V522 There might be dereferencing of a potential null pointer 'strtok_s(str, "|", & str)'.
 		longitude = std::stof(strtok_s(str, "|", &str)); ///TODO: V522 https://www.viva64.com/en/w/V522 There might be dereferencing of a potential null pointer 'strtok_s(str, "|", & str)'.
-		// atoi(char*) - переводит строку в int
+		// atoi(char*) - РїРµСЂРµРІРѕРґРёС‚ СЃС‚СЂРѕРєСѓ РІ int
 		population = atoi(str);
-		if (population < 0) std::cout << "Население не может быть отрицательным" << std::endl;
+		if (population < 0) std::cout << "РќР°СЃРµР»РµРЅРёРµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Рј" << std::endl;
 	}
 };

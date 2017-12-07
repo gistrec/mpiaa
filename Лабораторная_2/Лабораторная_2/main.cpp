@@ -1,21 +1,21 @@
-#include "Container.h"
+п»ї#include "Container.h"
 #include "heapSort.h"
 
 
 void main() {
 	setlocale(LC_ALL, "Russian");
 
-	// Создание контейнера
+	// РЎРѕР·РґР°РЅРёРµ РєРѕРЅС‚РµР№РЅРµСЂР°
 	Container container;
-	// Загрузка записей из файла
+	// Р—Р°РіСЂСѓР·РєР° Р·Р°РїРёСЃРµР№ РёР· С„Р°Р№Р»Р°
 	container.load("input.txt");
 
-	// Печатаем таблицу	
+	// РџРµС‡Р°С‚Р°РµРј С‚Р°Р±Р»РёС†Сѓ	
 	container.print();
 	std::cout << std::endl << std::endl;
-	// Сортируем по названию
+	// РЎРѕСЂС‚РёСЂСѓРµРј РїРѕ РЅР°Р·РІР°РЅРёСЋ
 	heapSort(container.table, container.table.size());
-	// Еще раз печатаем таблицу
+	// Р•С‰Рµ СЂР°Р· РїРµС‡Р°С‚Р°РµРј С‚Р°Р±Р»РёС†Сѓ
 	container.print();
 
 	system("pause");
