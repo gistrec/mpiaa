@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <vector>
 #include <fstream>
 
@@ -6,22 +6,22 @@
 
 class Container {
 private:
-	// Вектор, состоит из классов Town
+	// Р’РµРєС‚РѕСЂ, СЃРѕСЃС‚РѕРёС‚ РёР· РєР»Р°СЃСЃРѕРІ Town
 	std::vector<Town> table;
 
-	// Записей на странице
-	// При постраничном выводе
+	// Р—Р°РїРёСЃРµР№ РЅР° СЃС‚СЂР°РЅРёС†Рµ
+	// РџСЂРё РїРѕСЃС‚СЂР°РЅРёС‡РЅРѕРј РІС‹РІРѕРґРµ
 	int rowOnPage = 5;
 
 public:
 	
-	// Добавить	элемент
+	// Р”РѕР±Р°РІРёС‚СЊ	СЌР»РµРјРµРЅС‚
 	void add(const Town &data) {
-		// Если такого города еще нет
+		// Р•СЃР»Рё С‚Р°РєРѕРіРѕ РіРѕСЂРѕРґР° РµС‰Рµ РЅРµС‚
 		if (!find(data)) {
 			table.push_back(data);
 		} else {
-			std::cout << "Город " << data.name << " уже есть в таблице" << std::endl;
+			std::cout << "Р“РѕСЂРѕРґ " << data.name << " СѓР¶Рµ РµСЃС‚СЊ РІ С‚Р°Р±Р»РёС†Рµ" << std::endl;
 		}
 	}
 
@@ -29,7 +29,7 @@ public:
 		return table.size();
 	}
 
-	// Есть ли город с таким же названием в контейнере
+	// Р•СЃС‚СЊ Р»Рё РіРѕСЂРѕРґ СЃ С‚Р°РєРёРј Р¶Рµ РЅР°Р·РІР°РЅРёРµРј РІ РєРѕРЅС‚РµР№РЅРµСЂРµ
 	bool find(const Town &data) const{
 		for (int i = 0; i < table.size(); i++) {
 			if (table[i].name == data.name) return true;
@@ -37,22 +37,22 @@ public:
 		return false;
 	}
 
-	// Напечатать все
+	// РќР°РїРµС‡Р°С‚Р°С‚СЊ РІСЃРµ
 	void print() const {
 		for (int i = 0; i < table.size(); i++) {
 			std::cout << table[i].to_string() << std::endl;
 		}
 	}
 
-	// Установить кол-во записей на странице
+	// РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РєРѕР»-РІРѕ Р·Р°РїРёСЃРµР№ РЅР° СЃС‚СЂР°РЅРёС†Рµ
 	void setRowOnPage(int count) {
 		rowOnPage = count;
 	}
 
-	// Напечатать выбранную страницу
+	// РќР°РїРµС‡Р°С‚Р°С‚СЊ РІС‹Р±СЂР°РЅРЅСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ
 	void printPage(int page) {
 		int maxPage = ceil(table.size() / rowOnPage);
-		std::cout << "Выведена страница " << page << " из " << maxPage << std::endl;
+		std::cout << "Р’С‹РІРµРґРµРЅР° СЃС‚СЂР°РЅРёС†Р° " << page << " РёР· " << maxPage << std::endl;
 		for (int i = rowOnPage * page; i < rowOnPage * (page + 1); i++) {
 			std::cout << table[i].to_string() << std::endl;
 		}

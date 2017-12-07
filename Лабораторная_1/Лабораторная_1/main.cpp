@@ -1,18 +1,18 @@
-#include "Container.h"
+п»ї#include "Container.h"
 
 void main() {
 	setlocale(LC_ALL, "Russian");
 
-	// Создание контейнера
+	// РЎРѕР·РґР°РЅРёРµ РєРѕРЅС‚РµР№РЅРµСЂР°
 	Container container;
-	// Загрузка записей из файла
+	// Р—Р°РіСЂСѓР·РєР° Р·Р°РїРёСЃРµР№ РёР· С„Р°Р№Р»Р°
 	container.load("input.txt");
 
-	std::cout << "В таблице " << container.size() << " элементов" << std::endl;
-	// Вывод страниц
+	std::cout << "Р’ С‚Р°Р±Р»РёС†Рµ " << container.size() << " СЌР»РµРјРµРЅС‚РѕРІ" << std::endl;
+	// Р’С‹РІРѕРґ СЃС‚СЂР°РЅРёС†
 	container.printPage(1);
 	
-	std::cout << std::endl << "Установили 2 записи на стринице" << std::endl;
+	std::cout << std::endl << "РЈСЃС‚Р°РЅРѕРІРёР»Рё 2 Р·Р°РїРёСЃРё РЅР° СЃС‚СЂРёРЅРёС†Рµ" << std::endl;
 	container.setRowOnPage(2);
 	container.printPage(1);
 
