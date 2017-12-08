@@ -113,14 +113,9 @@
     <ClCompile Include="graph.cpp" />
     <ClCompile Include="graph_algs.cpp" />
     <ClCompile Include="graph_algs_2.cpp" />
-    <ClCompile Include="graph_algs_2_test.cpp" />
-    <ClCompile Include="graph_algs_test.cpp" />
-    <ClCompile Include="graph_test.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="unit-test.cpp" />
+    <ClCompile Include="time.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="catch.hpp" />
     <ClInclude Include="graph.h" />
     <ClInclude Include="graph_algs.h" />
     <ClInclude Include="graph_algs_2.h" />
