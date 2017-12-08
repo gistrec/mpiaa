@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <vector>
 
 void printArray(std::vector<int> &array) {
@@ -9,25 +9,41 @@ void printArray(std::vector<int> &array) {
 }
 
 void counting_sort(std::vector<int> &vec) {
-	// Создаем вспомогательный массив
-	
-	// Минимальное и максимальное значение
-	int min = (int) std::min_element(vec.begin(), vec.end());
+	if (vec.size() < 2) return;
 
+	// РњРёРЅРёРјР°Р»СЊРЅРѕРµ Рё РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
+	int min = vec[0];
+	int max = vec[0];
 
+	for (auto iter = vec.begin(); iter != vec.end(); ++iter) {
+		if (*iter > max) max = *iter;
+		if (*iter < min) min = *iter;
+	}
+
+	int delta = 0 - min;
+
+	std::vector<int> fixVector(vec.size());
+	int b = 0;
+	for (auto iter = vec.begin(); iter != vec.end(); ++iter) {
+		fixVector[b] = *iter + delta;
+		b++;
+	}
+
+	// РЎРѕР·РґР°РµРј РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Р№ РјР°СЃСЃРёРІ
 	std::vector<int> cnt(vec.size());
-	// Заполняем вспомогательный массив нулями
+
+	// Р—Р°РїРѕР»РЅСЏРµРј РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Р№ РјР°СЃСЃРёРІ РЅСѓР»СЏРјРё
 	for (auto iter = cnt.begin(); iter != cnt.end(); ++iter) {
 		*iter = 0;
 	}
-	for (auto iter = vec.begin(); iter != vec.end(); ++iter) {
+	for (auto iter = fixVector.begin(); iter != fixVector.end(); ++iter) {
 		++cnt[*iter];
 	}
-	int b = 0;
+	b = 0;
 
 	for (size_t j = 0; j < cnt.size(); ++j) {
 		for (size_t i = 0; i < cnt[j]; ++i) {
-			vec[b] = j;
+			vec[b] = j - delta;
 			//std::cout << j << " ";
 			++b;
 		}
